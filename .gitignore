@@ -1,0 +1,9 @@
+/*
+
+!.gitignore
+
+!/bash
+!/bash/**
+
+!/zed
+!/zed/**
