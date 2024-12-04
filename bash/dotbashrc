@@ -118,3 +118,32 @@ fi
 . "$HOME/.asdf/asdf.sh"
 . "$HOME/.asdf/completions/asdf.bash"
 export PATH=$HOME/.local/bin:$PATH
+#alias
+
+#general
+alias 'bx'='bundle exec'
+
+# Git
+alias 'g'='git'
+alias 'ga'='g add'
+alias 'gap'='ga -p'
+alias 'gpo'='g push origin'
+alias 'gc'='g commit'
+alias 'gcm'='gc -m'
+alias 'gst'='g status'
+alias 'gb'='g branch'
+alias 'gbd'='gb -D'
+alias 'gco'='g checkout'
+alias 'gcb'='gco -b'
+
+# Docker
+alias 'dc'='docker-compose'
+alias 'dcu'='dc up -d'
+alias 'dcd'='dc down'
+
+# Rails
+alias 'rs'='bx rails s'
+alias 'rc'='bx rails console'
+alias 'bxr'='bx rspec'
+alias 'rdbm'='bx rails db:migrate'
+alias 'rdtm'='bx rails data:migrate'
