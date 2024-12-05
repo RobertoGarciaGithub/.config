@@ -120,6 +120,11 @@ fi
 export PATH=$HOME/.local/bin:$PATH
 export PGHOST="localhost"
 
+
+function kport() {
+  kill -9 $(lsof -t -i:$1)
+}
+
 #alias
 
 #general
