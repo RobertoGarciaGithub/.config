@@ -52,6 +52,8 @@
       "alt-shift-j": "editor::DuplicateLineDown",
       "alt-shift-k": "editor::DuplicateLineUp",
       "g c": "editor::ToggleComments",
+      "ctrl-h": "editor::Outdent",
+      "ctrl-l": "editor::Indent",
       "shift-h": "editor::SelectToBeginningOfLine",
       "shift-l": "editor::SelectToEndOfLine"
     }
@@ -59,6 +61,8 @@
   {
     "context": "Editor && vim_mode == normal",
     "bindings": {
+      "ctrl-w": "pane::CloseActiveItem",
+      "shift-w": "pane::CloseAllItems",
       "K": "editor::Hover",
       "alt-h": "pane::ActivatePrevItem",
       "alt-j": "editor::MoveLineDown",

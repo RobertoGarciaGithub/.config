@@ -56,19 +56,13 @@
     100
   ],
   "lsp": {
-    // "ruby-lsp": {
-    //   "initialization_options": {
-    //     "enabledFeatures": {
-    //       "diagnostics": false
-    //     }
-    //   }
-    // },
     "rubocop": {
       "initialization_options": {
         "safeAutocorrect": false
       }
     },
     "solargraph": {
+      "command": "/home/beto/.asdf/shims/solargraph",
       "initialization_options": {
         "diagnostics": true,
         "formatting": true
