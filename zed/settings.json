@@ -62,7 +62,12 @@
       }
     },
     "solargraph": {
-      "command": "/home/beto/.asdf/shims/solargraph",
+      "binary": {
+        "path": "/home/beto/.asdf/shims/solargraph",
+        "arguments": [
+          "stdio"
+        ]
+      },
       "initialization_options": {
         "diagnostics": true,
         "formatting": true
