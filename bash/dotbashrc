@@ -142,6 +142,7 @@ alias 'gb'='g branch'
 alias 'gbd'='gb -D'
 alias 'gco'='g checkout'
 alias 'gcb'='gco -b'
+alias 'gpu'='g pull && yarn && bundle && rdbm && rdbm RAILS_ENV=test'
 
 # Docker
 alias 'dc'='docker-compose'

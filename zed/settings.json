@@ -9,8 +9,8 @@
 {
   "assistant": {
     "default_model": {
-      "provider": "openai",
-      "model": "gpt-4-turbo-preview"
+      "provider": "copilot_chat",
+      "model": "gpt-4o"
     },
     "version": "2"
   },
@@ -58,7 +58,7 @@
   "lsp": {
     "rubocop": {
       "initialization_options": {
-        "safeAutocorrect": false
+        "safeAutocorrect": true
       }
     },
     "solargraph": {
@@ -68,6 +68,13 @@
           "stdio"
         ]
       },
+      // "ruby-lsp": {
+      //   "binary": {
+      //     "path": "/home/beto/.asdf/shims/ruby-lsp",
+      //     "arguments": [
+      //       "stdio"
+      //     ]
+      //   },
       "initialization_options": {
         "diagnostics": true,
         "formatting": true
@@ -80,9 +87,12 @@
     }
   },
   "languages": {
+    "JSONC": {
+      "show_inline_completions": true
+    },
     "Ruby": {
       "language_servers": [
-        "!rubocop",
+        "rubocop",
         "!ruby-lsp",
         "solargraph",
         "tailwindcss-language-server",
