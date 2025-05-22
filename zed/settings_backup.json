@@ -8,10 +8,9 @@
 // from the command palette or from `Zed` application menu.
 {
   "features": {
-    "edit_prediction_provider": "zed"
+    "inline_completion_provider": "zed"
   },
-  "agent": {
-    "always_allow_tool_actions": true,
+  "assistant": {
     "default_model": {
       "provider": "zed.dev",
       "model": "claude-3-7-sonnet-latest"
@@ -51,7 +50,7 @@
     "show_parameter_hints": false,
     "show_type_hints": false
   },
-  "edit_predictions": {
+  "inline_completions": {
     "enabled": true
   },
   "terminal": {
@@ -68,18 +67,23 @@
         "safeAutocorrect": true
       }
     },
-    // "solargraph": {
-    //   "binary": {
-    //     "path": "/home/beto/.asdf/shims/solargraph",
-    //     "arguments": [
-    //       "stdio"
-    //     ]
-    //   },
-    "ruby-lsp": {
+    "solargraph": {
+      "binary": {
+        "path": "/home/beto/.asdf/shims/solargraph",
+        "arguments": [
+          "stdio"
+        ]
+      },
+      // "ruby-lsp": {
+      //   "binary": {
+      //     "path": "/home/beto/.asdf/shims/ruby-lsp",
+      //     "arguments": [
+      //       "stdio"
+      //     ]
+      //   },
       "initialization_options": {
-        "enabledFeatures": {
-          "diagnostics": false
-        }
+        "diagnostics": true,
+        "formatting": true
       }
     },
     "elixir-ls": {
@@ -90,14 +94,14 @@
   },
   "languages": {
     "JSONC": {
-      "show_edit_predictions": true
+      "show_inline_completions": true
     },
     "Ruby": {
       "language_servers": [
-        "ruby-lsp",
-        "!solargraph",
-        "rubocop",
-        // "tailwindcss-language-server",
+        "!rubocop",
+        "!ruby-lsp",
+        "solargraph",
+        "tailwindcss-language-server",
         "..."
       ]
     },

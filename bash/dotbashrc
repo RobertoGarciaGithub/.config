@@ -121,8 +121,20 @@ export PATH=$HOME/.local/bin:$PATH
 export PGHOST="localhost"
 
 
-function kport() {
+kport() {
   kill -9 $(lsof -t -i:$1)
+}
+
+delete_current_branch_and_checkout_main() {
+  branch=$(gb --show-current)
+
+  if [[ "$branch" == "master" || "$branch" == "main" ]]; then
+    echo "You are in the '$branch'. Do not save delete"
+    return 1
+  fi
+
+  gco master 2>/dev/null || gco main
+  git branch -D "$branch"
 }
 
 #alias
@@ -134,12 +146,12 @@ alias 'bx'='bundle exec'
 alias 'g'='git'
 alias 'ga'='g add'
 alias 'gap'='ga -p'
-alias 'gpo'='if bundle exec rubocop > /dev/null 2>&1; then git push origin $(git branch --show-current); elif ! bundle list | grep rubocop > /dev/null; then git push origin $(git branch --show-current); else echo "Rubocop errors."; fi'
+alias 'gpo'='if bundle exec rubocop > /dev/null 2>&1; then git push origin $(gb --show-current); elif ! bundle list | grep rubocop > /dev/null; then git push origin $(gb --show-current); else echo "Rubocop errors."; fi'
 alias 'gc'='g commit'
 alias 'gcm'='gc -m'
 alias 'gst'='g status'
 alias 'gb'='g branch'
-alias 'gbd'='gb -D'
+alias 'gbd'='delete_current_branch_and_checkout_main'
 alias 'gco'='g checkout'
 alias 'gcb'='gco -b'
 alias 'gpu'='g pull && yarn && bundle && rdbm && rdbm RAILS_ENV=test'
