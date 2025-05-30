@@ -13,9 +13,9 @@
       "alt-shift-down": "editor::DuplicateLineDown",
       "alt-up": "editor::MoveLineUp",
       "super-enter": "editor::GoToDefinition",
-      "super-shift-c": "editor::CopyRelativePath",
+      "super-shift-c": "workspace::CopyRelativePath",
       "ctrl-super-c": "editor::ToggleComments",
-      "ctrl-super-h": "pane::ActivatePrevItem",
+      "ctrl-super-h": "pane::ActivatePreviousItem",
       "ctrl-super-l": "pane::ActivateNextItem",
       "ctrl-h": "project_panel::ToggleFocus",
       "ctrl-j": "terminal_panel::ToggleFocus",
@@ -30,10 +30,7 @@
   {
     "context": "Editor && vim_mode == insert",
     "bindings": {
-      "j k": [
-        "vim::SwitchMode",
-        "Normal"
-      ]
+      "j k": "vim::SwitchToNormalMode"
     }
   },
   {
@@ -64,15 +61,15 @@
       "ctrl-w": "pane::CloseActiveItem",
       "shift-w": "pane::CloseAllItems",
       "K": "editor::Hover",
-      "alt-h": "pane::ActivatePrevItem",
+      "alt-h": "pane::ActivatePreviousItem",
       "alt-j": "editor::MoveLineDown",
       "alt-k": "editor::MoveLineUp",
       "alt-l": "pane::ActivateNextItem",
       "alt-b": "workspace::ToggleLeftDock",
       "ctrl-a": "editor::SelectAll",
-      "ctrl-shift-h": "pane::ActivatePrevItem",
+      "ctrl-shift-h": "pane::ActivatePreviousItem",
       "ctrl-shift-l": "pane::ActivateNextItem",
-      "g b": "editor::ToggleGitBlame",
+      "g b": "git::Blame",
       "g c c": "editor::ToggleComments",
       "g r": "editor::FindAllReferences",
       "shift-alt-j": "editor::DuplicateLineDown",
@@ -84,7 +81,7 @@
     "context": "Terminal",
     "bindings": {
       "super-/": "workspace::ToggleZoom",
-      "ctrl-super-h": "pane::ActivatePrevItem",
+      "ctrl-super-h": "pane::ActivatePreviousItem",
       "ctrl-super-l": "pane::ActivateNextItem",
       "ctrl-h": "project_panel::ToggleFocus",
       "ctrl-j": null,
@@ -96,14 +93,14 @@
     "bindings": {
       "alt-b": "workspace::ToggleLeftDock",
       "backspace": "project_panel::Delete",
-      "super-c": "project_panel::CopyRelativePath",
+      "super-c": "workspace::CopyRelativePath",
       "super-left": "project_panel::CollapseAllEntries",
       "ctrl-h": "project_panel::CollapseAllEntries",
       "ctrl-j": "terminal_panel::ToggleFocus",
       "ctrl-l": "project_panel::ToggleFocus",
       "enter": "project_panel::OpenPermanent",
       "shift-enter": "project_panel::Open",
-      "space": "project_panel::Rename",
+      "space": "project_panel::Rename"
     }
   }
 ]
