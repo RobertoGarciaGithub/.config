@@ -171,3 +171,6 @@ alias 'bxr'='bx rspec'
 alias 'rdbm'='r db:migrate'
 alias 'rdtm'='r data:migrate'
 alias 'rubocop'='bx rubocop'
+
+# Sidekick
+alias 'sid'='bundle exec sidekiq -c 2 -v -q mailer -q default -q invalid_email -q catalog'
