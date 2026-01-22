@@ -126,6 +126,18 @@ kport() {
 }
 
 delete_current_branch_and_checkout_main() {
+  target_branch="$1"
+
+  if [[ -n "$target_branch" ]]; then
+    if [[ "$target_branch" == "master" || "$target_branch" == "main" ]]; then
+      echo "Can not to delete branch '$target_branch'."
+      return 1
+    fi
+
+    git branch -D "$target_branch"
+    return $?
+  fi
+
   branch=$(gb --show-current)
 
   if [[ "$branch" == "master" || "$branch" == "main" ]]; then
@@ -135,7 +147,30 @@ delete_current_branch_and_checkout_main() {
 
   gco master 2>/dev/null || gco main
   git branch -D "$branch"
+  gpu
 }
+
+current_branch_main() {
+ branch=$(gb --show-current);
+
+ if [ "$branch" = "master" ] || [ "$branch" = "main" ]; then
+   echo " You can push! Your current branch is '$branch'.";
+   return 1;
+ fi	
+}
+
+check_rubocop() {
+  branch="$(gb --show-current)"
+
+  if bundle exec rubocop > /dev/null 2>&1; then
+    git push origin "$branch"
+  elif ! bundle list | grep -q rubocop; then
+    git push origin "$branch"
+  else
+    echo "Rubocop errors."
+  fi
+}
+
 
 #alias
 
@@ -146,14 +181,15 @@ alias 'bx'='bundle exec'
 alias 'g'='git'
 alias 'ga'='g add'
 alias 'gap'='ga -p'
-alias 'gpo'='if bundle exec rubocop > /dev/null 2>&1; then git push origin $(gb --show-current); elif ! bundle list | grep rubocop > /dev/null; then git push origin $(gb --show-current); else echo "Rubocop errors."; fi'
+alias 'gpo'='current_branch_main && check_rubocop'
+alias 'gpof'='check_rubocop'
 alias 'gc'='g commit'
+alias 'gcb'='gco -b'
 alias 'gcm'='gc -m'
 alias 'gst'='g status'
 alias 'gb'='g branch'
 alias 'gbd'='delete_current_branch_and_checkout_main'
 alias 'gco'='g checkout'
-alias 'gcb'='gco -b'
 alias 'gpu'='g pull && yarn && bundle && rdbm && rdbm RAILS_ENV=test'
 
 # Docker
@@ -174,3 +210,16 @@ alias 'rubocop'='bx rubocop'
 
 # Sidekick
 alias 'sid'='bundle exec sidekiq -c 2 -v -q mailer -q default -q invalid_email -q catalog'
+
+# --------------------------------------------------
+# Git aliases autocomplete
+# --------------------------------------------------
+
+if type __git_complete &>/dev/null; then
+  __git_complete gco _git_checkout
+  __git_complete gcb _git_checkout
+  __git_complete gb  _git_branch
+  __git_complete gst _git_status
+  __git_complete gc  _git_commit
+fi
+

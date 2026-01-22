@@ -20,7 +20,6 @@
       "provider": "copilot_chat",
       "model": "claude-sonnet-4"
     },
-    "version": "2"
   },
   "file_associations": {
     "*.erb": "html"
@@ -36,7 +35,7 @@
   "hover_popover_enabled": true,
   "line_indicator_format": "short",
   "preferred_line_length": 9999,
-  "relative_line_numbers": true,
+  "relative_line_numbers": "enabled",
   "remove_trailing_whitespace_on_save": true,
   "show_inline_suggestions": true,
   "show_whitespaces": "boundary",
@@ -72,6 +71,9 @@
         "safeAutocorrect": true
       }
     },
+    "steep": {
+      "require_root_steepfile": false
+    },
     // "solargraph": {
     //   "binary": {
     //     "path": "/home/beto/.asdf/shims/solargraph",
@@ -93,6 +95,13 @@
     }
   },
   "languages": {
+    "HTML": {
+      "auto_indent": false
+    },
+    "ERB": {
+      "preferred_line_length": 100,
+      "auto_indent": false
+    },
     "JSONC": {
       "show_edit_predictions": true
     },
@@ -106,7 +115,7 @@
       ]
     },
     "JavaScript": {
-      "format_on_save": {
+      "formatter": {
         "external": {
           "command": "prettier",
           "arguments": [
@@ -114,10 +123,11 @@
             "{buffer_path}"
           ]
         }
-      }
+      },
+      "format_on_save": "on"
     },
     "TypeScript": {
-      "format_on_save": {
+      "formatter": {
         "external": {
           "command": "prettier",
           "arguments": [
@@ -125,10 +135,11 @@
             "{buffer_path}"
           ]
         }
-      }
+      },
+      "format_on_save": "on"
     },
     "Markdown": {
-      "format_on_save": {
+      "formatter": {
         "external": {
           "command": "prettier",
           "arguments": [
@@ -136,10 +147,11 @@
             "{buffer_path}"
           ]
         }
-      }
+      },
+      "format_on_save": "on"
     },
     "TSX": {
-      "format_on_save": {
+      "formatter": {
         "external": {
           "command": "prettier",
           "arguments": [
@@ -147,10 +159,11 @@
             "{buffer_path}"
           ]
         }
-      }
+      },
+      "format_on_save": "on"
     },
     "CSS": {
-      "format_on_save": {
+      "formatter": {
         "external": {
           "command": "prettier",
           "arguments": [
@@ -158,10 +171,11 @@
             "{buffer_path}"
           ]
         }
-      }
+      },
+      "format_on_save": "on"
     },
     "Elixir": {
-      "format_on_save": {
+      "formatter": {
         "external": {
           "command": "mix",
           "arguments": [
@@ -171,7 +185,8 @@
             "-"
           ]
         }
-      }
+      },
+      "format_on_save": "on"
     }
   }
 }

@@ -8,12 +8,17 @@
 // from the command palette or from `Zed` application menu.
 {
   "features": {
-    "inline_completion_provider": "zed"
+    "edit_prediction_provider": "copilot"
   },
-  "assistant": {
+  "agent": {
+    "inline_assistant_model": {
+      "provider": "copilot_chat",
+      "model": "claude-sonnet-4"
+    },
+    "always_allow_tool_actions": true,
     "default_model": {
-      "provider": "zed.dev",
-      "model": "claude-3-7-sonnet-latest"
+      "provider": "copilot_chat",
+      "model": "claude-sonnet-4"
     },
     "version": "2"
   },
@@ -31,7 +36,7 @@
   "hover_popover_enabled": true,
   "line_indicator_format": "short",
   "preferred_line_length": 9999,
-  "relative_line_numbers": true,
+  "relative_line_numbers": "enabled",
   "remove_trailing_whitespace_on_save": true,
   "show_inline_suggestions": true,
   "show_whitespaces": "boundary",
@@ -50,7 +55,7 @@
     "show_parameter_hints": false,
     "show_type_hints": false
   },
-  "inline_completions": {
+  "edit_predictions": {
     "enabled": true
   },
   "terminal": {
@@ -67,23 +72,21 @@
         "safeAutocorrect": true
       }
     },
-    "solargraph": {
-      "binary": {
-        "path": "/home/beto/.asdf/shims/solargraph",
-        "arguments": [
-          "stdio"
-        ]
-      },
-      // "ruby-lsp": {
-      //   "binary": {
-      //     "path": "/home/beto/.asdf/shims/ruby-lsp",
-      //     "arguments": [
-      //       "stdio"
-      //     ]
-      //   },
+    "steep": {
+      "require_root_steepfile": false
+    },
+    // "solargraph": {
+    //   "binary": {
+    //     "path": "/home/beto/.asdf/shims/solargraph",
+    //     "arguments": [
+    //       "stdio"
+    //     ]
+    //   },
+    "ruby-lsp": {
       "initialization_options": {
-        "diagnostics": true,
-        "formatting": true
+        "enabledFeatures": {
+          "diagnostics": false
+        }
       }
     },
     "elixir-ls": {
@@ -93,20 +96,27 @@
     }
   },
   "languages": {
+    "HTML": {
+      "auto_indent": false
+    },
+    "ERB": {
+      "preferred_line_length": 100,
+      "auto_indent": false
+    },
     "JSONC": {
-      "show_inline_completions": true
+      "show_edit_predictions": true
     },
     "Ruby": {
       "language_servers": [
-        "!rubocop",
-        "!ruby-lsp",
-        "solargraph",
-        "tailwindcss-language-server",
+        "ruby-lsp",
+        "!solargraph",
+        "rubocop",
+        // "tailwindcss-language-server",
         "..."
       ]
     },
     "JavaScript": {
-      "format_on_save": {
+      "formatter": {
         "external": {
           "command": "prettier",
           "arguments": [
@@ -114,10 +124,11 @@
             "{buffer_path}"
           ]
         }
-      }
+      },
+      "format_on_save": "on"
     },
     "TypeScript": {
-      "format_on_save": {
+      "formatter": {
         "external": {
           "command": "prettier",
           "arguments": [
@@ -125,10 +136,11 @@
             "{buffer_path}"
           ]
         }
-      }
+      },
+      "format_on_save": "on"
     },
     "Markdown": {
-      "format_on_save": {
+      "formatter": {
         "external": {
           "command": "prettier",
           "arguments": [
@@ -136,10 +148,11 @@
             "{buffer_path}"
           ]
         }
-      }
+      },
+      "format_on_save": "on"
     },
     "TSX": {
-      "format_on_save": {
+      "formatter": {
         "external": {
           "command": "prettier",
           "arguments": [
@@ -147,10 +160,11 @@
             "{buffer_path}"
           ]
         }
-      }
+      },
+      "format_on_save": "on"
     },
     "CSS": {
-      "format_on_save": {
+      "formatter": {
         "external": {
           "command": "prettier",
           "arguments": [
@@ -158,10 +172,11 @@
             "{buffer_path}"
           ]
         }
-      }
+      },
+      "format_on_save": "on"
     },
     "Elixir": {
-      "format_on_save": {
+      "formatter": {
         "external": {
           "command": "mix",
           "arguments": [
@@ -171,7 +186,8 @@
             "-"
           ]
         }
-      }
+      },
+      "format_on_save": "on"
     }
   }
 }
