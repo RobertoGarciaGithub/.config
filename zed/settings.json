@@ -10,6 +10,13 @@
   "features": {
     "edit_prediction_provider": "copilot"
   },
+  "gutter": {
+    "line_numbers": true,
+    "min_line_number_digits": 2,
+    "runnables": false,
+    "breakpoints": false,
+    "folds": false
+  },
   "agent": {
     "inline_assistant_model": {
       "provider": "copilot_chat",
